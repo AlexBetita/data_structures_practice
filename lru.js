@@ -4,18 +4,21 @@
 
 /*
   First solution for map_ cache data structure using map
-  Runtime: 184 ms, faster than 91.47% of JavaScript online submissions for map_ Cache.
-  Memory Usage: 51.1 MB, less than 62.94% of JavaScript online submissions for map_ Cache.
+  Runtime: 184 ms, faster than 91.47% of JavaScript online submissions for LRU Cache.
+  Memory Usage: 51.1 MB, less than 62.94% of JavaScript online submissions for LRU Cache.
 */
 
 /*-------------------**************----------------------
   comments: Initially Tried Array's with Objects but was too slow
-  exceeding the time limit
+            exceeding the time limit
   problem: make a simple LRU(least recently used) cache
   used: built in map data structure in javascript
   reason: map is an ordered object easy to implement FIFO
-  remarks: could be faster with a DLL(doubly linked list)
-
+  space complexity: O(n) only creates key, value pairs up to n
+  time complexity: put O(1) and get O(1)
+  remarks: could be faster with a DLL(doubly linked list) I think
+           >Debunked< this is much faster than DLL with Hashing
+           with same memory efficiency
 ---------------------**************----------------------*/
 
  var LRUCache = function(capacity) {
@@ -60,6 +63,25 @@ LRUCache.prototype.put = function(key, value) {
 
 };
 
+/*
+  Second solution for map_ cache data structure using map
+  Runtime: 228 ms, faster than 29.79% of JavaScript online submissions for LRU Cache.
+  Memory Usage: 51.6 MB, less than 39.15% of JavaScript online submissions for LRU Cache.
+*/
+
+/*-------------------**************----------------------
+  comments: Wanted to see if DLL is faster than Javascripts built in map data structure
+            problem: make a simple LRU(least recently used) cache
+  used: DLL(Doubly Linked List) and hashing
+  reason: DLL with Hashing can achieve O(1) get and O(1) put and search O(1)
+          through the use of pointers, I use DLL to set up the pointers and hashing to create
+          FIFO like structure
+  space complexity: O(n) only creates key, value pairs up to n
+  time complexity: put O(1) and get O(1)
+  remarks: I thought it'd be faster than the Map object for the extra cost of memory
+           but it seems that they equally have the same space complexity O(n)
+
+---------------------**************----------------------*/
 
 class Node{
   constructor(key){
@@ -195,8 +217,7 @@ class Dll{
 
   Used for submission
 
-*
-/
+*/
 
 // class Node{
 //   constructor(key){

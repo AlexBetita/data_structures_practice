@@ -16,7 +16,14 @@
   reason: map is an ordered object easy to implement FIFO
   space complexity: O(n) only creates key, value pairs up to n
   time complexity: put O(1) and get O(1)
-  remarks: could be faster with a DLL(doubly linked list) I think
+  remarks: was really interesting to learn and research all about the
+           Map object and it's different methods.
+           One thing note is that when finding values or keys it actually returns
+           an iterator object with that being said
+           iterating over an iterator is said to
+           consume the iterator, because it is generally only possible to do once
+           thus allowing for less memory usage.
+           Could be faster with a DLL(doubly linked list) I think
            >Debunked< this is much faster than DLL with Hashing
            with same memory efficiency
 ---------------------**************----------------------*/
@@ -80,7 +87,10 @@ LRUCache.prototype.put = function(key, value) {
   time complexity: put O(1) and get O(1)
   remarks: I thought it'd be faster than the Map object for the extra cost of memory
            but it seems that they equally have the same space complexity O(n)
-
+           also this took me 3 hours to debug -_- and I realized one of my object instances
+           was taking "value" as a parameter instead of "key"...... cause I initially had
+           my Node class take take in value and key, then I realized my hash object can do that for me.
+           Forgot to change the parameters rippp...
 ---------------------**************----------------------*/
 
 class Node{
